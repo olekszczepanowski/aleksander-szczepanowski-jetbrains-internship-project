@@ -7,7 +7,7 @@ import cn from "classnames";
 import { TESTIMONIALS } from "./data";
 import { Section } from "../common/section";
 import { Container } from "../common/container";
-import { useSortOrder } from "./hook";
+import { useSortOrder } from "~/hooks/use-sort-order";
 
 function UsageSectionContent() {
   const textCn = useTextStyles();

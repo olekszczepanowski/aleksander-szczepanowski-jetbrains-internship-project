@@ -58,3 +58,8 @@
 @utility shadow-header {
   box-shadow: inset 0 -1px rgba(255, 255, 255, 0.2);
 }
+
+@utility gradient-start-section {
+  background: #7f52ff
+    radial-gradient(89.53% 145.96% at 0.34% 100.79%, #ef4857 0%, #de4970 17.58%, #b44db0 50.31%, #7f52ff 97.03%);
+}
