@@ -1,7 +1,5 @@
 @import "tailwindcss";
-
 @theme {
-  --font-mono: "JetBrains Mono", "Liberation Mono", Consolas, Menlo, Courier, monospace;
   --breakpoint-sm: 640px;
   --breakpoint-nav: 720px;
   --breakpoint-md: 1000px;
@@ -37,6 +35,23 @@
     vertical-align: text-bottom;
     margin-left: -8px;
     transition: color 0.3s ease;
+  }
+
+  pre,
+  code,
+  var,
+  kbd,
+  samp {
+    font-family: monospace, serif;
+    _font-family: "courier new", monospace;
+    font-size: 1em;
+  }
+
+  pre {
+    margin: 0;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 }
 

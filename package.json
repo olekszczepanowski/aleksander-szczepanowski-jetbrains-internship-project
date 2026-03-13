@@ -27,6 +27,7 @@
     "@rescui/ui-contexts": "^0.6.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
+    "highlight.js": "^11.11.1",
     "isbot": "^5.1.31",
     "js-yaml": "^4.1.1",
     "lucide-react": "^0.577.0",
