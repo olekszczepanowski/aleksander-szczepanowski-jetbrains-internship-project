@@ -1,26 +1,18 @@
-import { Header } from "~/components/header/header";
-import type { Route } from "./+types/home";
-import { loadReleases } from "~/data/data";
+import { Nav } from "~/components/nav";
+import { HeaderSection } from "~/components/header-section";
+import { ThemeProvider } from "@rescui/ui-contexts";
+import { LatestFromKotlinSection } from "~/components/latest-from-kotlin-section";
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
   return [{ title: "Kotlin Programming Language" }];
 }
 
-export function loader() {
-  const releases = loadReleases();
-  return { releases };
-}
-
-export default function Home({ loaderData }: Route.ComponentProps) {
-  const { releases } = loaderData;
-
+export default function Home() {
   return (
-    <>
-      <div className="bg-dark shadow-[inset_0_-1px_rgba(255,255,255,0.2)]">
-        <Header url={releases.latest.url} version={releases.latest.version} />
-      </div>
-      <div className="h-128 bg-dark"></div>
-    </>
+    <ThemeProvider theme="dark">
+      <Nav />
+      <HeaderSection />
+      <LatestFromKotlinSection />
+    </ThemeProvider>
   );
 }
-

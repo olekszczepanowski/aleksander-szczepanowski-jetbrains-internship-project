@@ -1,7 +1,3 @@
 export function Container({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="box-border mx-auto max-w-319 xl:max-w-249 px-5.5 w-full">
-      {children}
-    </div>
-  );
+  return <div className="mx-auto w-full px-4 sm:px-5.5 md:max-w-249 lg:max-w-319">{children}</div>;
 }
