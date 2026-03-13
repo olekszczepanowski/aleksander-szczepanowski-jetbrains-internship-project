@@ -23,8 +23,8 @@ export function LatestFromKotlinSection() {
             className="leading-0 font-[0px]"
           >
             <picture>
-              <source media="(max-width: 537px)" srcSet={"banners/kotlin-1.6.20-mobile.png"} />
-              <img src={"banners/kotlin-1.6.20.png"} alt="Kotlin 1.6.20 released" width="100%" />
+              <source media="(max-width: 537px)" srcSet={"images/banners/kotlin-1.6.20-mobile.png"} />
+              <img src={"images/banners/kotlin-1.6.20.png"} alt="Kotlin 1.6.20 released" width="100%" />
             </picture>
           </a>
         </div>
