@@ -1,4 +1,4 @@
-import { Nav } from "~/components/nav";
+import { Header } from "~/components/header";
 import { HeaderSection } from "~/components/header-section";
 import { ThemeProvider } from "@rescui/ui-contexts";
 import { LatestFromKotlinSection } from "~/components/latest-from-kotlin-section";
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <ThemeProvider theme="dark">
       <title>Kotlin Programming Language</title>
-      <Nav />
+      <Header />
       <HeaderSection />
       <LatestFromKotlinSection />
       <WhyKotlinSection randomTabIndex={randomTabIndex} />

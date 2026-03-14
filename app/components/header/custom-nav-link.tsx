@@ -1,4 +1,4 @@
-export function NavLink({ label }: { label: string }) {
+export function CustomNavLink({ label }: { label: string }) {
   return (
     <a
       href="#"
