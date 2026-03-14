@@ -35,23 +35,26 @@ export function HeaderSection() {
           </div>
 
           <div className="mt-12 grid grid-cols-12 gap-4">
-            {CARDS_DATA.map((card) => (
-              <a
+            {CARDS_DATA.map((card, index) => (
+              <div
                 key={card.id}
-                href={card.link}
-                className={cn(
-                  cardCn({
-                    theme: "dark",
-                    mode: "classic",
-                    isClickable: true,
-                  }),
-                  "col-span-12 sm:col-span-6 md:col-span-3",
-                )}
+                className={cn("col-span-12 sm:col-span-6 md:col-span-3", index >= 2 && "hidden min-[768px]:grid")}
               >
-                <img src={card.img} alt={card.title} />
-                <h2 className={cn(textCn("rs-h3"), "mt-4")}>{card.title}</h2>
-                <p className={cn(textCn("rs-text-2"), "mt-4")}>{card.subTitle}</p>
-              </a>
+                <a
+                  href={card.link}
+                  className={cn(
+                    cardCn({
+                      theme: "dark",
+                      mode: "classic",
+                      isClickable: true,
+                    }),
+                  )}
+                >
+                  <img src={card.img} alt={card.title} />
+                  <h2 className={cn(textCn("rs-h3"), "mt-4")}>{card.title}</h2>
+                  <p className={cn(textCn("rs-text-2"), "mt-4")}>{card.subTitle}</p>
+                </a>
+              </div>
             ))}
           </div>
           <p className={cn(textCn("rs-text-2"), "mt-4")}>

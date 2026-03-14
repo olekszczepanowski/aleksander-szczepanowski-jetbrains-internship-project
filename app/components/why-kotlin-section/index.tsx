@@ -8,14 +8,14 @@ import { SECTIONS } from "./data";
 import { YouTubeEmbed } from "./components/youtube-embed";
 import { ProgrammingLanguage } from "./components/programming-language";
 
-function WhyKotlinContent() {
+function WhyKotlinContent({ randomTabIndex }: { randomTabIndex: number }) {
   const textCn = useTextStyles();
   return (
     <Section className="bg-white pt-24">
       <Container>
         <h2 className={textCn("rs-hero")}>Why Kotlin</h2>
 
-        <ProgrammingLanguage />
+        <ProgrammingLanguage randomTabIndex={randomTabIndex} />
 
         {SECTIONS.map((section, index) => (
           <div key={index} className="mt-24 grid grid-cols-12 gap-8 max-md:mt-12">
@@ -41,10 +41,10 @@ function WhyKotlinContent() {
     </Section>
   );
 }
-export function WhyKotlinSection() {
+export function WhyKotlinSection({ randomTabIndex }: { randomTabIndex: number }) {
   return (
     <ThemeProvider theme="light">
-      <WhyKotlinContent />
+      <WhyKotlinContent randomTabIndex={randomTabIndex} />
     </ThemeProvider>
   );
 }

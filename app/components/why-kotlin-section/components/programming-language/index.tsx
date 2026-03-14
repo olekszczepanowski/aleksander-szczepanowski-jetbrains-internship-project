@@ -15,9 +15,9 @@ function highlightCode(code: string): string {
   return hljs.highlight(code, { language: "kotlin" }).value;
 }
 
-export function ProgrammingLanguage() {
+export function ProgrammingLanguage({ randomTabIndex }: { randomTabIndex: number }) {
   const textCn = useTextStyles();
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(randomTabIndex);
 
   const highlighted = highlightCode(TABS[activeIndex].code);
 
