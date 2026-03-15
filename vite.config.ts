@@ -7,17 +7,6 @@ import devtoolsJson from "vite-plugin-devtools-json";
 export default defineConfig({
   plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), devtoolsJson()],
   ssr: {
-    noExternal: [
-      "@rescui/typography",
-      "@rescui/button",
-      "@rescui/card",
-      "@rescui/checkbox",
-      "@rescui/colors",
-      "@rescui/icons",
-      "@rescui/input",
-      "@rescui/tab-list",
-      "@rescui/tooltip",
-      "@rescui/ui-contexts",
-    ],
+    noExternal: [/@rescui\/.*/],
   },
 });

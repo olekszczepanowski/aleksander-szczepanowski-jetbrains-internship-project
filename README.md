@@ -1,22 +1,12 @@
-# Welcome to React Router!
+# Kotlin Homepage — React Router 7 Migration
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Migration of the [kotlinlang.org](https://kotlinlang.org) homepage from a legacy React + Flask setup to **React Router 7 Framework Mode** with **Server-Side Rendering (SSR)**.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+This project is a solution for the [JetBrains Internship 2026 test assignment](https://github.com/JetBrains/kotlin-web-site-jetsites-internship-2026).
 
-## Features
+## Running
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
+### Via pnpm
 
 Install the dependencies:
 
@@ -24,9 +14,7 @@ Install the dependencies:
 pnpm i
 ```
 
-### Development
-
-Start the development server with HMR:
+Start the development server:
 
 ```bash
 pnpm dev
@@ -34,54 +22,45 @@ pnpm dev
 
 Your application will be available at `http://localhost:5173`.
 
-## Building for Production
-
-Create a production build:
+### Via docker
 
 ```bash
-pnpm build
+docker compose up
 ```
 
-## Deployment
+Your application will be available at `http://localhost:3000`.
 
-### Docker Deployment
+## Implementation
 
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `pnpm build`
+### Project Structure
 
 ```
-├── package.json
-├── pnpm-lock.yaml
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+app/
+├── components/
+│   ├── common/                    # Shared layout primitives (Container, Section)
+│   ├── header/
+│   ├── header-section/
+│   ├── why-kotlin-section/
+│   ├── usage-section/
+│   ├── latest-from-kotlin-section/
+│   ├── start-section/
+│   └── footer/
+├── hooks/                         # Custom React hooks
+├── routes/
+│   └── home.tsx                   # Homepage route
+├── root.tsx                       # App shell, meta tags, error boundary
+├── routes.ts                      # Route configuration
+└── app.css                        # Global styles & Tailwind imports
 ```
 
-## Styling
+### Approach
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+Looking at the test task repository, I noticed it uses SCSS. After going through the style files, I saw that the styles could be easily migrated to Tailwind, as many of them were utility-like classes for grid layout (e.g. `kto-grid`, `kto-col`, `kto-grid-gap`). I decided to remove SCSS and use Tailwind instead, since it's the default CSS framework provided by `create-react-router@latest`.
 
----
+After starting the migration, I noticed some issues with the header and footer provided by `@jetbrains/kotlin-web-site-ui`. The library turned out to be incompatible with Vite's SSR and React 19, causing `ReactCurrentOwner` errors during server-side rendering. After several unsuccessful attempts to work around this (via Vite's `ssr.noExternal` and `optimizeDeps`), I decided to rewrite both components from scratch, matching the original design while ensuring full SSR compatibility. I also noticed that in the legacy website from the task repository, the header's nav menu wasn't functional, clicking the menu button had no effect. I added a custom mobile menu implementation, following the UI from kotlinlang.org.
 
-Built with ❤️ using React Router.
+I used the latest versions of `@rescui` components. Some of them have a slightly different appearance compared to the legacy website; for example, the default button has different colour. However, I decided to add custom styling for `<a>` elements specifically, as the difference was quite noticeable. They now behave the same as in the legacy website. For code blocks, I used the latest version of `highlight.js`. I noticed some colour differences, but the legacy project used `highlight.js/styles/github.css` with the Kotlin language module, so I decided to stick with that setup. If matching the legacy styling more closely were needed, we could create a custom theme following the [highlight.js theme guide](https://highlightjs.readthedocs.io/en/latest/theme-guide.html).
+
+I've added ESLint and Prettier configs to the project. These are standard across modern projects, ensuring consistent code style and catching common issues early. I also set up a CI pipeline that runs on every push to `master` and on pull requests — it checks formatting, linting, type-checking, and builds the application to make sure nothing is broken before merging.
+
+Meta tags (title, description, twitter etc.) are handled using React 19's built-in `<meta>` and `<title>` elements directly in components, which is the recommended approach over React Router's `meta` export.

@@ -30,9 +30,9 @@ function UsageSectionContent() {
         </div>
 
         <div className="mt-12 grid grid-cols-12 gap-4">
-          {sortedTestimonials.map((item, index) => (
+          {sortedTestimonials.map((item) => (
             <a
-              key={index}
+              key={item.company}
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"

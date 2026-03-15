@@ -31,13 +31,13 @@ export function NavDropdown({
       {open && (
         <div className={cn("absolute top-full left-0 z-50 pt-2", rightAligned && "right-0 left-auto")}>
           <div className="bg-dark w-67.5 border border-white/20 py-2 shadow-2xl">
-            {options.map((s) => (
+            {options.map((option) => (
               <a
-                key={s}
+                key={option}
                 href="#"
                 className="block px-4 py-2 text-nowrap text-white/75 transition-colors hover:bg-white/10 hover:text-white"
               >
-                {s}
+                {option}
               </a>
             ))}
           </div>

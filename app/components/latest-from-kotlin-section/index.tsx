@@ -30,8 +30,8 @@ export function LatestFromKotlinSection() {
         </div>
 
         <div className="mt-8 grid grid-cols-12 gap-8">
-          {newsData.map((news, index) => (
-            <div key={index} className="col-span-12 sm:col-span-6 md:col-span-3">
+          {newsData.map((news) => (
+            <div key={news.title} className="col-span-12 sm:col-span-6 md:col-span-3">
               <p className={textCn("rs-text-3")}>{news.tag}</p>
               <h3 className={cn(textCn("rs-text-2"), "mt-2")}>
                 <RsLink href={news.link} label={news.title} external={true} target="_blank" rel="noopener noreferrer" />

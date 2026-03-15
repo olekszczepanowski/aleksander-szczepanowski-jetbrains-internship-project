@@ -16,6 +16,15 @@ export function Header() {
     };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 720px)");
+    const handler = () => {
+      if (mql.matches) setMobileOpen(false);
+    };
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
+  }, []);
+
   function toggleDropdown(label: string) {
     setOpenDropdown((current) => (current === label ? null : label));
   }

@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="grid min-w-80 grid-cols-[1fr_75px] gap-x-4 px-4 pt-8 pb-4 sm:grid-cols-[1fr_60px] sm:p-8">
       <div className="sm:flex sm:h-6 sm:items-center" style={{ gridArea: "social-list" }}>
-        <div className={cn(textCn("rs-h4"), "mb-2 sm:mr-8 sm:mb-0")}>Stay in touch:</div>
+        <div className={cn(textCn("rs-h4"), "mb-2 sm:mr-6 sm:mb-0")}>Stay in touch:</div>
         <div className="-my-1.5 grid grid-flow-col justify-start gap-x-2 min-[481px]:gap-x-4.5">
           {SOCIAL_LINKS.map(({ label, href, icon: Icon }) => (
             <a
@@ -27,17 +27,17 @@ export function Footer() {
 
       <nav className="mt-6 mb-8 min-[930px]:h-6 sm:my-4" style={{ gridArea: "nav-list" }}>
         <ul className="flex flex-wrap leading-8">
-          {FOOTER_LINKS.map((link, i) => (
+          {FOOTER_LINKS.map(({ label, href, blank }) => (
             <li
-              key={i}
+              key={label}
               className="relative mr-2 pr-2 after:absolute after:top-1/2 after:right-0 after:h-3 after:w-px after:-translate-y-1/2 after:bg-white/50 last:after:hidden"
             >
               <a
-                href={link.href}
-                {...(link.blank && { target: "_blank", rel: "noopener noreferrer" })}
+                href={href}
+                {...(blank && { target: "_blank", rel: "noopener noreferrer" })}
                 className="rs-link hover:text-dark border-b-white text-white/70"
               >
-                {link.label}
+                {label}
               </a>
             </li>
           ))}
