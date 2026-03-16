@@ -4,7 +4,17 @@ Migration of the [kotlinlang.org](https://kotlinlang.org) homepage from a legacy
 
 This project is a solution for the [JetBrains Internship 2026 test assignment](https://github.com/JetBrains/kotlin-web-site-jetsites-internship-2026).
 
+## Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js + npm](https://nodejs.org/) (required for pnpm installation)
+- [pnpm](https://pnpm.io/installation) – install via `npm install -g pnpm`
+- [Docker](https://docs.docker.com/get-docker/) (only if running via Docker)
+
 ## Running
+
+> All commands should be run from the **root directory** of the project.
 
 ### Via pnpm
 

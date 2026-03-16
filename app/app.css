@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@rescui/typography/lib/font-jb-sans-auto.css";
 
 @font-face {
   font-family: "JetBrains Mono";
